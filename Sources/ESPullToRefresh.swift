@@ -299,7 +299,7 @@ open class ESRefreshHeaderView: ESRefreshComponent {
         scrollView.contentInset = insets
         scrollView.contentOffset.y = previousOffset
         previousOffset -= animator.executeIncremental
-        UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveLinear, animations: {
             scrollView.contentOffset.y = -insets.top
         }, completion: { (finished) in
             self.handler?()
@@ -323,7 +323,7 @@ open class ESRefreshHeaderView: ESRefreshComponent {
         // Back state
         scrollView.contentInset.top = self.scrollViewInsets.top
         scrollView.contentOffset.y =  self.previousOffset
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.0, delay: 0, options: .curveLinear, animations: {
             scrollView.contentOffset.y = -self.scrollViewInsets.top
             }, completion: { (finished) in
                 self.animator.refresh(view: self, stateDidChange: .pullToRefresh)
@@ -442,7 +442,7 @@ open class ESRefreshFooterView: ESRefreshComponent {
         let y = max(0.0, scrollView.contentSize.height - scrollView.bounds.size.height + scrollView.contentInset.bottom)
         
         // Call handler
-        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.0, delay: 0.0, options: .curveLinear, animations: {
             scrollView.contentOffset = CGPoint.init(x: x, y: y)
         }, completion: { (animated) in
             self.handler?()
@@ -457,7 +457,7 @@ open class ESRefreshFooterView: ESRefreshComponent {
         self.animator.refreshAnimationEnd(view: self)
         
         // Back state
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: {
+        UIView.animate(withDuration: 0.0, delay: 0, options: .curveLinear, animations: {
         }, completion: { (finished) in
             if self.noMoreData == false {
                 self.animator.refresh(view: self, stateDidChange: .pullToRefresh)
@@ -472,7 +472,7 @@ open class ESRefreshFooterView: ESRefreshComponent {
             contentOffset.y = min(contentOffset.y, scrollView.contentSize.height - scrollView.frame.size.height)
             if contentOffset.y < 0.0 {
                 contentOffset.y = 0.0
-                UIView.animate(withDuration: 0.1, animations: { 
+                UIView.animate(withDuration: 0.0, animations: { 
                     scrollView.setContentOffset(contentOffset, animated: false)
                 })
             } else {
