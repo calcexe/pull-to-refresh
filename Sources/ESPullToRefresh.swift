@@ -49,6 +49,7 @@ public extension ES where Base: UIScrollView {
     @discardableResult
     func addPullToRefresh(handler: @escaping ESRefreshHandler) -> ESRefreshHeaderView {
         removeRefreshHeader()
+        stopLoadingMore()
         let header = ESRefreshHeaderView(frame: CGRect.zero, handler: handler)
         let headerH = header.animator.executeIncremental
         header.frame = CGRect.init(x: 0.0, y: -headerH /* - contentInset.top */, width: self.base.bounds.size.width, height: headerH)
@@ -60,6 +61,7 @@ public extension ES where Base: UIScrollView {
     @discardableResult
     func addPullToRefresh(animator: ESRefreshProtocol & ESRefreshAnimatorProtocol, handler: @escaping ESRefreshHandler) -> ESRefreshHeaderView {
         removeRefreshHeader()
+        stopLoadingMore()
         let header = ESRefreshHeaderView(frame: CGRect.zero, handler: handler, animator: animator)
         let headerH = animator.executeIncremental
         header.frame = CGRect.init(x: 0.0, y: -headerH /* - contentInset.top */, width: self.base.bounds.size.width, height: headerH)
