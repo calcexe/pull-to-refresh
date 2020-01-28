@@ -280,6 +280,8 @@ open class ESRefreshHeaderView: ESRefreshComponent {
             return
         }
         
+        scrollView.es.stopLoadingMore()
+        
         // ignore observer
         self.ignoreObserver(true)
         
